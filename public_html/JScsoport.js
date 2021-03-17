@@ -15,7 +15,7 @@ function feltolt(db, min, max) {
 function parosok() {
     var szam = 0;
     for (var i = 0; i < tomb.length; i++) {
-        if (tomb[i] % 2 === 0 && !(tomb[i]===0)) {
+        if (tomb[i] % 2 === 0 && !(tomb[i] === 0)) {
             parosokTomb[szam] = tomb[i];
             szam++;
         }
@@ -33,7 +33,7 @@ function forditott() {
 function ottelOszthato() {
     var db = 0;
     for (var i = 0; i < tomb.length; i++) {
-        if (tomb[i] % 5 === 0) {
+        if (tomb[i] % 5 === 0 && !(tomb[i]===0)) {
             db++;
         }
     }
@@ -53,7 +53,7 @@ function negyzetszamVanE() {
     var szam = 0;
     var van = "";
     for (var i = 0; i < tomb.length; i++) {
-        if (Math.sqrt(tomb[i])%1 === 0) {
+        if (Math.sqrt(tomb[i]) % 1 === 0 && !(tomb[i]===1)) {
             szam = tomb[i];
             osszeg += tomb[i];
         }
@@ -66,54 +66,50 @@ function negyzetszamVanE() {
     document.getElementById("negyzetszam").innerHTML = "Négyzetszám : " + van;
     document.getElementById("negyzetszamokOsszege").innerHTML = "Négyzetszámok összege : " + osszeg;
 }
-function harommalEsKettovelOszthato() {    
+function harommalEsKettovelOszthato() {
     var van = "Nincs";
-    var szam = 0;
-    while (szam === 0) {
-        for (var i = 0; i < tomb.length; i++) {
-            if (tomb[i] % 3 === 0 && tomb[i] % 2 === 0) {
-                szam++;
-                van = "Van";
-            }
+    for (var i = 0; i < tomb.length; i++) {
+        if (tomb[i] % 3 === 0 && tomb[i] % 2 === 0 && !(tomb[i]===0)) {
+            szam++;
+            van = "Van";
         }
-        szam++;
     }
     document.getElementById("harommalEsKettovelOszthato").innerHTML = "Hárommal és kettővel osztható: " + van;
 }
-function primszamVanE(){
+function primszamVanE() {
     var szam = 2;
     var van = "Nincs";
-        for (var i = 0; i < tomb.length; i++) {
-            if(tomb[i] === 2){
-                    van = "Van";
-                }
-            while(szam<tomb[i] && !(tomb[i]%szam === 0)){
-                szam++;
-                if(szam === tomb[i]){
-                    van = "Van";
-                }                
-            }
-            szam = 2;
+    for (var i = 0; i < tomb.length; i++) {
+        if (tomb[i] === 2) {
+            van = "Van";
         }
+        while (szam < tomb[i] && !(tomb[i] % szam === 0)) {
+            szam++;
+            if (szam === tomb[i]) {
+                van = "Van";
+            }
+        }
+        szam = 2;
+    }
     document.getElementById("primVanE").innerHTML = "Van-e prím?: " + van;
-    }
+}
 
-function primszamMegszamlalas(){
+function primszamMegszamlalas() {
     var szam = 2;
-        for (var i = 0; i < tomb.length; i++) {
-            if(tomb[i] === 2){
-                    primekdb++;
-                }
-            while(szam<tomb[i] && !(tomb[i]%szam === 0)){
-                szam++;
-                if(szam === tomb[i]){
-                    primekdb++;
-                }
-            }
-            szam = 2;
+    for (var i = 0; i < tomb.length; i++) {
+        if (tomb[i] === 2) {
+            primekdb++;
         }
-    document.getElementById("primszamMegszamlalas2").innerHTML = "Prímek száma: " + primekdb;
+        while (szam < tomb[i] && !(tomb[i] % szam === 0)) {
+            szam++;
+            if (szam === tomb[i]) {
+                primekdb++;
+            }
+        }
+        szam = 2;
     }
+    document.getElementById("primszamMegszamlalas2").innerHTML = "Prímek száma: " + primekdb;
+}
 
 
 function dolgozz() {
