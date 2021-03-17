@@ -1,5 +1,6 @@
 var tomb = [];
 var parosokTomb = [];
+var primekdb = 0;
 function feltolt(db, min, max) {
 
     for (var i = 0; i < db; i++) {
@@ -38,21 +39,24 @@ function legnagyobbSzam() {
     }
     document.getElementById("legnagyobb").innerHTML = "A legnagyobb szám: " + legnagyobb;
 }
-//function negyzetszamVanE() {
-//    var szam = 0;
-//    var van = "";
-//    for (var i = 0; i < tomb.length; i++) {
-//        if (Math.sqrt(tomb[i])) {
-//            szam = tomb[i];
-//        }
-//    }
-//    if (szam > 0) {
-//        van = "Van"
-//    } else {
-//        van = "Nincs"
-//    }
-//    document.getElementById("negyzetszam").innerHTML = "Négyzetszám : " + szam;
-//}
+function negyzetszamVanE() {
+    var osszeg = 0;
+    var szam = 0;
+    var van = "";
+    for (var i = 0; i < tomb.length; i++) {
+        if (Math.sqrt(tomb[i])%1 === 0) {
+            szam = tomb[i];
+            osszeg += tomb[i];
+        }
+    }
+    if (szam > 0) {
+        van = "Van"
+    } else {
+        van = "Nincs"
+    }
+    document.getElementById("negyzetszam").innerHTML = "Négyzetszám : " + van;
+    document.getElementById("negyzetszamokOsszege").innerHTML = "Négyzetszámok összege : " + osszeg;
+}
 function harommalEsKettovelOszthato() {    
     var van = "Nincs";
     var szam = 0;
@@ -70,24 +74,37 @@ function harommalEsKettovelOszthato() {
 function primszamVanE(){
     var szam = 2;
     var van = "Nincs";
-    var vanE = false;
-    while(!vanE){
         for (var i = 0; i < tomb.length; i++) {
             while(szam<tomb[i] && !(tomb[i]%szam == 0)){
                 szam++;
-                if(szam < tomb.length){
-                    vanE = true;
+                if(tomb[i]%szam == 0){
                     van = "Van";
                 }
             }
+            szam = 2;
         }
-        vanE = true;
-    }
     document.getElementById("primVanE").innerHTML = "Van-e prím?: " + van;
-}
+    }
+
+function primszamMegszamlalas(){
+    var szam = 2;
+        for (var i = 0; i < tomb.length; i++) {
+            while(szam<tomb[i] && !(tomb[i]%szam == 0)){
+                szam++;
+                if(tomb[i]%szam == 0){
+                    primekdb++;
+                }
+            }
+            szam = 2;
+        }
+    document.getElementById("primszamMegszamlalas").innerHTML = "Prímek száma: " + primekdb;
+    }
+
 
 function dolgozz() {
     tomb = [];
+    parosokTomb = [];
+    primekdb = 0;
     var db = document.getElementById("db").value;
     var min = document.getElementById("minimum").value;
     var max = document.getElementById("maximum").value;
@@ -96,8 +113,9 @@ function dolgozz() {
     ottelOszthato();
     legnagyobbSzam();
     harommalEsKettovelOszthato();
-    //negyzetszamVanE();
+    negyzetszamVanE();
     primszamVanE();
+    primszamMegszamlalas();
 }
 function init() {
     document.getElementById("ok").addEventListener("click", dolgozz);
