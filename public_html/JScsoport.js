@@ -20,6 +20,15 @@ function parosok(){
     }
     document.getElementById("parosok").innerHTML="Párosok: " + parosokTomb.join("; ");
 }
+function ottelOszthato(){
+    db = 0;
+    for (var i = 0; i < tomb.length; i++) {
+        if(tomb[i]%5 == 0){          
+        db++;
+        }
+    }
+    document.getElementById("ottelOsztható").innerHTML="Öttel oszthatók: "+ db;
+}
 
 function dolgozz() {
     tomb = [];
@@ -28,6 +37,7 @@ function dolgozz() {
     var max = document.getElementById("maximum").value; 
     feltolt(db, min, max);
     parosok();
+    ottelOszthato();
 }
 function init(){
     document.getElementById("ok").addEventListener("click", dolgozz);
