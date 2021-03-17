@@ -15,7 +15,7 @@ function feltolt(db, min, max) {
 function parosok() {
     var szam = 0;
     for (var i = 0; i < tomb.length; i++) {
-        if (tomb[i] % 2 === 0) {
+        if (tomb[i] % 2 === 0 && !(tomb[i]===0)) {
             parosokTomb[szam] = tomb[i];
             szam++;
         }
