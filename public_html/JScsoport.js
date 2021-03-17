@@ -2,7 +2,7 @@ var tomb = [];
 function feltolt(db, min, max){   
     
     for (var i = 0; i < db; i++) {
-        var vel = Math.floor(Math.random()*max + min);
+        var vel = Math.floor(Math.random()*(max - parseInt(min)+1) + parseInt(min));
         tomb[i] = vel;
     }
     console.log(tomb);
@@ -11,8 +11,10 @@ function feltolt(db, min, max){
 
 function dolgozz() {
     tomb = [];
-    var adat = document.getElementById("adat").value;
-    feltolt(adat);
+    var db = document.getElementById("db").value;
+    var min = document.getElementById("minimum").value;
+    var max = document.getElementById("maximum").value; 
+    feltolt(db, min, max);
 }
 function init(){
     document.getElementById("ok").addEventListener("click", dolgozz);
