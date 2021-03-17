@@ -1,6 +1,7 @@
 var tomb = [];
 var parosokTomb = [];
 var primekdb = 0;
+var tombForditott = [];
 function feltolt(db, min, max) {
 
     for (var i = 0; i < db; i++) {
@@ -20,6 +21,14 @@ function parosok() {
         }
     }
     document.getElementById("parosok").innerHTML = "Párosok: " + parosokTomb.join("; ");
+}
+function forditott() {
+    szam = 0;
+    for (var i = tomb.length; i >= 0; i--) {
+        tombForditott[szam] = tomb[i];
+        szam++;
+    }
+    document.getElementById("forditott").innerHTML = "Fordítva: " + tombForditott.join("; ");
 }
 function ottelOszthato() {
     var db = 0;
@@ -77,7 +86,7 @@ function primszamVanE(){
         for (var i = 0; i < tomb.length; i++) {
             while(szam<tomb[i] && !(tomb[i]%szam == 0)){
                 szam++;
-                if(tomb[i]%szam == 0){
+                if(szam === tomb[i]){
                     van = "Van";
                 }
             }
@@ -88,16 +97,18 @@ function primszamVanE(){
 
 function primszamMegszamlalas(){
     var szam = 2;
+    var szam2 = 0;
         for (var i = 0; i < tomb.length; i++) {
             while(szam<tomb[i] && !(tomb[i]%szam == 0)){
                 szam++;
-                if(tomb[i]%szam == 0){
+                if(szam === tomb[i]){
                     primekdb++;
+                    szam2++;
                 }
             }
             szam = 2;
         }
-    document.getElementById("primszamMegszamlalas").innerHTML = "Prímek száma: " + primekdb;
+    document.getElementById("primszamMegszamlalas2").innerHTML = "Prímek száma: " + primekdb;
     }
 
 
@@ -110,6 +121,7 @@ function dolgozz() {
     var max = document.getElementById("maximum").value;
     feltolt(db, min, max);
     parosok();
+    forditott();
     ottelOszthato();
     legnagyobbSzam();
     harommalEsKettovelOszthato();
