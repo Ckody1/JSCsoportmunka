@@ -15,7 +15,7 @@ function feltolt(db, min, max) {
 function parosok() {
     var szam = 0;
     for (var i = 0; i < tomb.length; i++) {
-        if (tomb[i] % 2 == 0) {
+        if (tomb[i] % 2 === 0) {
             parosokTomb[szam] = tomb[i];
             szam++;
         }
@@ -33,7 +33,7 @@ function forditott() {
 function ottelOszthato() {
     var db = 0;
     for (var i = 0; i < tomb.length; i++) {
-        if (tomb[i] % 5 == 0) {
+        if (tomb[i] % 5 === 0) {
             db++;
         }
     }
@@ -59,9 +59,9 @@ function negyzetszamVanE() {
         }
     }
     if (szam > 0) {
-        van = "Van"
+        van = "Van";
     } else {
-        van = "Nincs"
+        van = "Nincs";
     }
     document.getElementById("negyzetszam").innerHTML = "Négyzetszám : " + van;
     document.getElementById("negyzetszamokOsszege").innerHTML = "Négyzetszámok összege : " + osszeg;
@@ -69,9 +69,9 @@ function negyzetszamVanE() {
 function harommalEsKettovelOszthato() {    
     var van = "Nincs";
     var szam = 0;
-    while (szam == 0) {
+    while (szam === 0) {
         for (var i = 0; i < tomb.length; i++) {
-            if (tomb[i] % 3 == 0 && tomb[i] % 2 == 0) {
+            if (tomb[i] % 3 === 0 && tomb[i] % 2 === 0) {
                 szam++;
                 van = "Van";
             }
@@ -84,11 +84,14 @@ function primszamVanE(){
     var szam = 2;
     var van = "Nincs";
         for (var i = 0; i < tomb.length; i++) {
-            while(szam<tomb[i] && !(tomb[i]%szam == 0)){
+            if(tomb[i] === 2){
+                    van = "Van";
+                }
+            while(szam<tomb[i] && !(tomb[i]%szam === 0)){
                 szam++;
                 if(szam === tomb[i]){
                     van = "Van";
-                }
+                }                
             }
             szam = 2;
         }
@@ -97,13 +100,14 @@ function primszamVanE(){
 
 function primszamMegszamlalas(){
     var szam = 2;
-    var szam2 = 0;
         for (var i = 0; i < tomb.length; i++) {
-            while(szam<tomb[i] && !(tomb[i]%szam == 0)){
+            if(tomb[i] === 2){
+                    primekdb++;
+                }
+            while(szam<tomb[i] && !(tomb[i]%szam === 0)){
                 szam++;
                 if(szam === tomb[i]){
                     primekdb++;
-                    szam2++;
                 }
             }
             szam = 2;
