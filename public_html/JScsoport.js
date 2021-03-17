@@ -28,7 +28,7 @@ function forditott() {
         tombForditott[szam] = tomb[i];
         szam++;
     }
-    document.getElementById("forditott").innerHTML = "Fordítva: " + tombForditott.join("; ");
+    document.getElementById("forditott").innerHTML = "Fordítva: " + tombForditott.join(" ");
 }
 function ottelOszthato() {
     var db = 0;
