@@ -1,6 +1,5 @@
 var tomb = [];
 var parosokTomb = [];
-var harommalEsKettovelOszthatoTomb = [];
 function feltolt(db, min, max){
     
     for (var i = 0; i < db; i++) {
@@ -41,13 +40,19 @@ function legnagyobbSzam(){
 }
 function harommalEsKettovelOszthato(){
     szam = 0;
+    van = "";
     for (var i = 0; i < tomb.length; i++) {
-        if(tomb[i]%3 == 0 && tomb[i]%2 == 0){          
-            harommalEsKettovelOszthatoTomb[szam] = tomb[i];
+        if(tomb[i]%3 == 0 && tomb[i]%2 == 0){
             szam++;
         }
     }
-    document.getElementById("harommalEsKettovelOszthato").innerHTML="Hárommal és kettővel oszthatók: "+ harommalEsKettovelOszthatoTomb.join("; ");
+    if (szam > 0) {
+        van = "Van"
+    }
+    else{
+        van = "Nincs"
+    }
+    document.getElementById("harommalEsKettovelOszthato").innerHTML="Hárommal és kettővel osztható: "+ van;
 }
 
 function dolgozz() {
