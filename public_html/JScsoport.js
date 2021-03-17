@@ -29,6 +29,15 @@ function ottelOszthato(){
     }
     document.getElementById("ottelOsztható").innerHTML="Öttel oszthatók: "+ db;
 }
+function legnagyobbSzam(){
+    legnagyobb = 0;
+    for (var i = 0; i < tomb.length; i++) {
+        if(tomb[i]>legnagyobb){          
+            legnagyobb = tomb[i];
+        }
+    }
+    document.getElementById("legnagyobb").innerHTML="A legnagyobb szám: "+ legnagyobb;
+}
 
 function dolgozz() {
     tomb = [];
@@ -38,6 +47,7 @@ function dolgozz() {
     feltolt(db, min, max);
     parosok();
     ottelOszthato();
+    legnagyobbSzam();
 }
 function init(){
     document.getElementById("ok").addEventListener("click", dolgozz);
